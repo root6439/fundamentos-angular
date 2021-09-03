@@ -11,6 +11,8 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
+  public mouseOverLogin: boolean;
+
   public form: FormGroup = new FormGroup({
     username: new FormControl(null, [Validators.required]),
     password: new FormControl(null, [Validators.required])
@@ -22,6 +24,7 @@ export class LoginComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    
   }
 
   login(): void {
@@ -29,9 +32,11 @@ export class LoginComponent implements OnInit {
       this.form.get('username')?.value, 
       this.form.get('password')?.value
     )
-
     this.router.navigate(['/events'])
-    
+  }
+
+  cancel(): void {
+    this.router.navigate(['/events'])
   }
 
 }
