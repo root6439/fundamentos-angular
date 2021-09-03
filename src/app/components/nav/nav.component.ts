@@ -1,3 +1,5 @@
+import { IUser } from './../../modules/user/user.model';
+import { AuthService } from './../../modules/user/auth.service';
 import { Component } from "@angular/core";
 
 @Component({
@@ -6,5 +8,17 @@ import { Component } from "@angular/core";
   styleUrls: ['./nav.component.css']
 })
 export class NavBarComponent {
+
+  constructor(
+    private authService: AuthService
+  ) {}
+
+  public getUsername(): IUser {
+    return this.authService.currentUser;
+  }
+
+  public isAuthenticated(): boolean {
+    return this.authService.isAuthenticated();
+  }
 
 }

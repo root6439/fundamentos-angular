@@ -1,3 +1,4 @@
+import { IEvent } from './../event.model';
 
 import { Component, EventEmitter, Input, Output } from "@angular/core";
 
@@ -42,7 +43,7 @@ import { Component, EventEmitter, Input, Output } from "@angular/core";
 export class EventThumbnailComponent {
 
   @Input()
-  public event: any;
+  public event: IEvent;
 
   // To [ngClass]
 

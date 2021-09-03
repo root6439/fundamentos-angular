@@ -25,8 +25,9 @@
       </ul>
       <div class="navbar-header navbar-right">
         <ul class="nav navbar-nav">
-          <li>
-            <a [routerLink]="['user/profile']">Welcome John</a>
+          <li [ngSwitch]="isAuthenticated()">
+            <a *ngSwitchCase="false" routerLink="/user/login"> Login </a>
+            <a *ngSwitchCase="true" [routerLink]="['user/profile']">Welcome {{ getUsername()?.firstName }}</a>
           </li>
         </ul>
       </div>
