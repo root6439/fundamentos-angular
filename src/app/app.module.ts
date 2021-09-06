@@ -1,12 +1,14 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import {
   EventDetailsComponent,
   EventListComponent,
   EventThumbnailComponent,
-  CreateEventComponent
+  CreateEventComponent,
+  CreateSessionComponent
 } from './components/index.event'
 
 import {
@@ -30,11 +32,13 @@ import { AuthService } from './modules/user/auth.service';
     EventThumbnailComponent,
     NavBarComponent,
     CreateEventComponent,
-    Error404Component
+    Error404Component,
+    CreateSessionComponent
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(ROUTES)
+    RouterModule.forRoot(ROUTES),
+    ReactiveFormsModule
   ],
   providers: [
     EventService,

@@ -332,4 +332,11 @@ export class EventService {
     return this.events.find(event => event.id == idEvent);
   }
 
+  public saveEvent(event: IEvent): void {
+    event.id = 999;
+    event.sessions = []
+    console.log(event);
+    this.events.push(event);
+  }
+
 }

@@ -1,3 +1,4 @@
+import { CreateSessionComponent } from './components/create-session/create-session.component';
 import { EventListResolverService } from './services/event-list-resolver/event-list-resolver.service';
 import { EventRouteActivatorService } from './services/event-route-activate/event-route-activator.service';
 import { CreateEventComponent } from './components/create-event/create-event.component';
@@ -12,6 +13,7 @@ export const ROUTES: Routes = [
   { path: 'events', component: EventListComponent, resolve: { events: EventListResolverService } },
   { path: 'events/:id', component: EventDetailsComponent, canActivate: [EventRouteActivatorService] },
   { path: '404', component: Error404Component },
+  { path: 'events/session/new', component: CreateSessionComponent },
   { path: '', redirectTo: '/events', pathMatch: 'full' },
   {
     path: 'user',
