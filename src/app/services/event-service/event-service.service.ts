@@ -328,7 +328,7 @@ export class EventService {
 
   }
 
-  public getEvent(idEvent: number): IEvent | undefined {
+  public getEvent(idEvent: number): any {
     return this.events.find(event => event.id == idEvent);
   }
 
@@ -337,6 +337,11 @@ export class EventService {
     event.sessions = []
     console.log(event);
     this.events.push(event);
+  }
+
+  public updateEvent(event: IEvent): void {
+    let index = this.events.findIndex(x => x.id == event.id);
+    this.events[index] = event;
   }
 
 }

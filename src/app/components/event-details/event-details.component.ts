@@ -1,4 +1,4 @@
-import { IEvent } from './../event.model';
+import { IEvent, ISession } from './../event.model';
 
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
@@ -10,7 +10,8 @@ import { EventService } from 'src/app/services/event-service/event-service.servi
 })
 export class EventDetailsComponent implements OnInit {
 
-  public event: IEvent | undefined;
+  public event: IEvent
+  addMode: boolean;
 
   constructor(
     private eventService: EventService,
@@ -18,9 +19,23 @@ export class EventDetailsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.route.params.subscribe( (param: Params) => {
-      this.event = this.eventService.getEvent(param.id);
-    })
+    this.event = this.eventService.getEvent(this.route.snapshot.params.id);
+  }
+
+  addSession(): void {
+    this.addMode = true;
+  }
+
+  saveNewSession(session: ISession): void {
+    const nextId = Math.max.apply(null, this.event?.sessions.map(s => s.id));
+    session.id = nextId + 1;
+    this.event.sessions.push(session);
+    this.eventService.updateEvent(this.event)
+    this.addMode = false;
+  }
+
+  cancelForm(): void {
+    this.addMode = false;
   }
 
 }
