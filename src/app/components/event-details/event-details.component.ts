@@ -12,6 +12,7 @@ export class EventDetailsComponent implements OnInit {
 
   public event: IEvent
   addMode: boolean;
+  filterBy: string = 'all';
 
   constructor(
     private eventService: EventService,
