@@ -1,3 +1,4 @@
+import { VoterService } from './services/voter/voter.service';
 import { DurationPipe } from './shared/duration.pipe';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -29,6 +30,8 @@ import { AuthService } from './modules/user/auth.service';
 import { SessionListComponent } from './components/session-list/session-list.component';
 import { CollapsibleWellComponent } from './shared/collapsible-well/collapsible-well.component';
 import { SimpleModalComponent } from './shared/simple-modal/simple-modal.component';
+import { ModalTriggerDirective } from './shared/simple-modal/modal.directive';
+import { UpvoteComponent } from './components/session-list/upvote.component';
 
 declare let toastr: Toastr;
 declare let jQuery: any;
@@ -45,8 +48,10 @@ declare let jQuery: any;
     CreateSessionComponent,
     SessionListComponent,
     CollapsibleWellComponent,
+    UpvoteComponent,
     DurationPipe,
-    SimpleModalComponent
+    SimpleModalComponent,
+    ModalTriggerDirective
   ],
   imports: [
     BrowserModule,
@@ -64,7 +69,8 @@ declare let jQuery: any;
       useValue: checkDirtyState
     },
     EventListResolverService,
-    AuthService
+    AuthService,
+    VoterService
   ],
   bootstrap: [AppComponent]
 })

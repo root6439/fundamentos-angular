@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { JqueryService } from './jquery.service';
+import { VoterService } from './voter.service';
 
-describe('JqueryService', () => {
-  let service: JqueryService;
+describe('VoterServiceService', () => {
+  let service: VoterService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(JqueryService);
+    service = TestBed.inject(VoterService);
   });
 
   it('should be created', () => {
