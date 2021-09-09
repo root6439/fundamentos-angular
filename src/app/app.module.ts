@@ -32,6 +32,7 @@ import { CollapsibleWellComponent } from './shared/collapsible-well/collapsible-
 import { SimpleModalComponent } from './shared/simple-modal/simple-modal.component';
 import { ModalTriggerDirective } from './shared/simple-modal/modal.directive';
 import { UpvoteComponent } from './components/session-list/upvote.component';
+import { LocationValidator } from './components/create-event/location-validator.directive';
 
 declare let toastr: Toastr;
 declare let jQuery: any;
@@ -51,7 +52,8 @@ declare let jQuery: any;
     UpvoteComponent,
     DurationPipe,
     SimpleModalComponent,
-    ModalTriggerDirective
+    ModalTriggerDirective,
+    LocationValidator
   ],
   imports: [
     BrowserModule,
@@ -70,7 +72,7 @@ declare let jQuery: any;
     },
     EventListResolverService,
     AuthService,
-    VoterService
+    VoterService,
   ],
   bootstrap: [AppComponent]
 })
