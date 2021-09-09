@@ -1,7 +1,9 @@
+import { TOASTR_TOKEN } from './../../../services/toastr-service/toastr.service';
 import { AuthService } from './../auth.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Component } from '@angular/core'
+import { Component, Inject } from '@angular/core'
 import { Router } from '@angular/router';
+import { Toastr } from 'src/app/services';
 
 @Component({
   templateUrl: './profile.component.html',
@@ -11,7 +13,8 @@ export class ProfileComponent {
 
   constructor(
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    @Inject(TOASTR_TOKEN) private toastr: Toastr
   ) { }
 
   public profileForm: FormGroup = new FormGroup({
@@ -24,7 +27,7 @@ export class ProfileComponent {
   save(values: any): void {
     if (this.profileForm.valid) {
       this.authService.updateCurrentUser(values.firstName, values.lastName);
-      this.router.navigate(['/events']);
+      this.toastr.success('Profile saved');
     }
   }
 

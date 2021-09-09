@@ -15,8 +15,9 @@ import {
 import {
   EventListResolverService,
   EventRouteActivatorService,
-  ToastrService,
-  EventService
+  TOASTR_TOKEN,
+  EventService,
+  Toastr
 } from './services/index'
 
 import { AppComponent } from './app.component';
@@ -27,6 +28,7 @@ import { AuthService } from './modules/user/auth.service';
 import { SessionListComponent } from './components/session-list/session-list.component';
 import { CollapsibleWellComponent } from './shared/collapsible-well/collapsible-well.component';
 
+declare let toastr: Toastr;
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,7 +50,7 @@ import { CollapsibleWellComponent } from './shared/collapsible-well/collapsible-
   ],
   providers: [
     EventService,
-    ToastrService,
+    { provide: TOASTR_TOKEN, useValue: toastr},
     EventRouteActivatorService,
     {
       provide: 'canDeactivateCreateEvent',
