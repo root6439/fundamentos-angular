@@ -29,11 +29,11 @@ export class NavBarComponent {
 
   search(): void {
     this.eventService.searchSessions((this.searchTerm))
-      .subscribe(events => {
-        this.foundSessions = events;
+      .subscribe(sessions => {
+        this.foundSessions = sessions;
         console.log(this.foundSessions);
     })
-    
+
   }
 
 }

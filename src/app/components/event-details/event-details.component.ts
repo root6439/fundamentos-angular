@@ -6,11 +6,10 @@ import { EventService } from 'src/app/services/event-service/event-service.servi
 
 @Component({
   templateUrl: './event-details.component.html',
-  styleUrls: ['./event-details.component.css']
+  styleUrls: ['./event-details.component.css'],
 })
 export class EventDetailsComponent implements OnInit {
-
-  public event: IEvent
+  public event: IEvent;
   addMode: boolean;
   filterBy: string = 'all';
   sortBy: string = 'votes';
@@ -18,10 +17,13 @@ export class EventDetailsComponent implements OnInit {
   constructor(
     private eventService: EventService,
     private route: ActivatedRoute
-  ) { }
+  ) {}
 
   ngOnInit(): void {
-    this.event = this.eventService.getEvent(this.route.snapshot.params.id);
+    this.route.data.forEach((data) => {
+      this.event = data['event'];
+      this.addMode = false;
+    });
   }
 
   addSession(): void {
@@ -29,15 +31,17 @@ export class EventDetailsComponent implements OnInit {
   }
 
   saveNewSession(session: ISession): void {
-    const nextId = Math.max.apply(null, this.event?.sessions.map(s => s.id));
+    const nextId = Math.max.apply(
+      null,
+      this.event?.sessions.map((s) => s.id)
+    );
     session.id = nextId + 1;
     this.event.sessions.push(session);
-    this.eventService.updateEvent(this.event)
+    this.eventService.saveEvent(this.event).subscribe();
     this.addMode = false;
   }
 
   cancelForm(): void {
     this.addMode = false;
   }
-
 }

@@ -4,8 +4,8 @@ import { FormGroup, NG_VALIDATORS, Validator } from '@angular/forms';
 @Directive({
   selector: '[validateLocation]',
   providers: [
-    { provide: NG_VALIDATORS, useExisting: LocationValidator, multi: true}
-  ]
+    { provide: NG_VALIDATORS, useExisting: LocationValidator, multi: true },
+  ],
 })
 export class LocationValidator implements Validator {
   validate(formGroup: FormGroup): { [key: string]: any } | null {
@@ -25,7 +25,7 @@ export class LocationValidator implements Validator {
     ) {
       return null;
     } else {
-      return { validateLocation: false }
+      return { validateLocation: false };
     }
   }
 }
