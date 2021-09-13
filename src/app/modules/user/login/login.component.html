@@ -1,22 +1,39 @@
 <h1>Login</h1>
-<hr>
+<hr />
 <div class="col-sm-4">
   <form autocomplete="off" [formGroup]="form" (ngSubmit)="login()">
-
     <div class="form-group">
       <label for="userName">User Name:</label>
-      <input id="userName" type="text" class="form-control" placeholder="example123" formControlName="username"
-        required />
-      <small class="form-text text-danger" *ngIf="(form.controls.username?.touched && mouseOverLogin)">
+      <input
+        id="userName"
+        type="text"
+        class="form-control"
+        placeholder="example123"
+        formControlName="username"
+        required
+      />
+      <small
+        class="form-text text-danger"
+        *ngIf="form.controls.username?.touched && mouseOverLogin"
+      >
         Required
       </small>
     </div>
 
     <div class="form-group">
       <label for="password">Password:</label>
-      <input id="password" type="password" class="form-control" placeholder="password@123#" formControlName="password"
-        required />
-      <small class="form-text text-danger" *ngIf="(form.controls.password?.touched && mouseOverLogin)">
+      <input
+        id="password"
+        type="password"
+        class="form-control"
+        placeholder="password@123#"
+        formControlName="password"
+        required
+      />
+      <small
+        class="form-text text-danger"
+        *ngIf="form.controls.password?.touched && mouseOverLogin"
+      >
         Required
       </small>
     </div>
@@ -31,7 +48,13 @@
       (mouseleave)="mouseOverLogin=false">
       Login
     </button> -->
-    
-    <button type="button" class="btn btn-default" (click)="cancel()">Cancel</button>
+
+    <button type="button" class="btn btn-default" (click)="cancel()">
+      Cancel
+    </button>
   </form>
+
+  <br />
+
+  <div *ngIf="loginInvalid" class="alert alert-danger">Invalid Login Info</div>
 </div>

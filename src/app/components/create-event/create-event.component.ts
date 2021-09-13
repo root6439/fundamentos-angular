@@ -17,11 +17,9 @@ export class CreateEventComponent implements OnInit {
     date: new FormControl(null, Validators.required),
     time: new FormControl(null, Validators.required),
     price: new FormControl(null, Validators.required),
-    location: new FormGroup({
-      address: new FormControl(null),
-      city: new FormControl(null),
-      country: new FormControl(null),
-    }),
+    address: new FormControl(null),
+    city: new FormControl(null),
+    country: new FormControl(null),
     onlineUrl: new FormControl(null),
     imageUrl: new FormControl(null, Validators.required),
   });
