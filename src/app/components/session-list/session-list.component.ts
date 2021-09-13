@@ -32,8 +32,8 @@ export class SessionListComponent implements OnChanges {
     if (this.sessions) {
       this.filterSessions(this.filterBy);
       this.sortBy == 'name'
-        ? this.sessions.sort(sortByVotesDesc)
-        : this.sessions.sort(sortByNameAsc);
+        ? this.visibleSessions.sort(sortByVotesDesc)
+        : this.visibleSessions.sort(sortByNameAsc);
     }
   }
 
@@ -79,5 +79,6 @@ function sortByNameAsc(s1: ISession, s2: ISession) {
 }
 
 function sortByVotesDesc(s1: ISession, s2: ISession) {
-  return s2.voters.length - s1.voters.length;
+  if (s1.voters && s2.voters) return s2.voters.length - s1.voters.length;
+  else return 0;
 }
