@@ -11,7 +11,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavBarComponent implements OnInit {
   foundSessions: ISession[];
-  searchTerm: string = '';
+  searchTerm = '';
   events: IEvent[];
 
   constructor(

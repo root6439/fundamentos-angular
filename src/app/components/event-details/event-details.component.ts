@@ -11,8 +11,8 @@ import { EventService } from 'src/app/services/event-service/event-service.servi
 export class EventDetailsComponent implements OnInit {
   public event: IEvent;
   addMode: boolean;
-  filterBy: string = 'all';
-  sortBy: string = 'votes';
+  filterBy = 'all';
+  sortBy = 'votes';
 
   constructor(
     private eventService: EventService,

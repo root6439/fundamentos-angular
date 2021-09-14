@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   public mouseOverLogin: boolean;
-  loginInvalid: boolean = false;
+  loginInvalid = false;
 
   public form: FormGroup = new FormGroup({
     username: new FormControl(null, [Validators.required]),

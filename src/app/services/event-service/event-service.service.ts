@@ -31,7 +31,7 @@ export class EventService {
   }
 
   public saveEvent(event: IEvent): Observable<IEvent> {
-    let options = {
+    const options = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
     };
     return this.http
@@ -39,7 +39,7 @@ export class EventService {
       .pipe(catchError(this.handleError<IEvent>('saveEvent')));
   }
 
-  private handleError<T>(operation: string = 'operation', result?: T) {
+  private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error);
       return of(result as T);

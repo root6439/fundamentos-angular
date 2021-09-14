@@ -14,7 +14,7 @@ export class AuthService {
   public currentUser: IUser;
 
   login(username: string, password: string) {
-    let loginInfo = {
+    const loginInfo = {
       username: username,
       password: password,
     };

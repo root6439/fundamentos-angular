@@ -24,7 +24,7 @@ export class CreateEventComponent implements OnInit {
     imageUrl: new FormControl(null, Validators.required),
   });
 
-  public isDirty: boolean = true;
+  public isDirty = true;
 
   constructor(private route: Router, private eventService: EventService) {}
 
